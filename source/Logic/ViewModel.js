@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   ViewState.DOM.targetWrap.addEventListener("click", (e) => {
-    if (Model.isTrackMode) return
+    if (Model.isTrackMode()) return
     if (e.target.closest(".target")) return
     Model.registerMiss()
   })

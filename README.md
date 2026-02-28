@@ -19,6 +19,15 @@ A browser-based aim training application built with vanilla JavaScript using MVV
 
 ## How to Run
 
-1. Clone the repository
-2. Open `index.html` with Live Server or directly in browser
+### 🌐 Online
 
+Open the live version:  
+👉 https://spqr2235.github.io/aim-training/
+
+---
+
+### 💻 Local
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/SPQR2235/aim-training.git

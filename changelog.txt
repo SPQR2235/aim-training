@@ -1,0 +1,98 @@
+Beta 1.0 {  
+    
+    Первая рабочая версия  
+    // First working version
+}
+
+Beta 1.1 {  
+
+    Улучшение визуала  
+    // Visual improvements
+
+    Доработка структуры  
+    // Refinement of structure
+
+    небольшие изменения в JavaScript  
+    // Minor changes in JavaScript
+}
+
+Beta 1.2 {  
+
+    Улучшение JavaScript  
+    // JavaScript improvements
+
+    Добавление Звуков и кнопки включения/выключения звуков  
+    // Added sounds and a button to toggle sound on/off
+
+    Небольшие доработки в дизайне  
+    // Minor design improvements
+}
+
+Beta 1.2.1 {  
+
+    Улучшена и доработана структура JavaScipt
+    // Improved and refined JavaScript structure
+
+    Улучшена структура html  
+    // Improved HTML structure
+
+    Испраалена ошибка которая не позволяла изменять цвет мишеням сразу  
+    после применения темы (цвет менялся только после клика на каждый блок)
+    // Fixed a bug that prevented targets from changing color immediately  
+    after applying a theme (color only changed after clicking each block)
+
+    Косметические доработки
+    // Cosmetic improvements
+
+    Добавлена статистика
+    // Added statistics
+
+    Добавлена анимация блоков  
+    // Added block animation
+}
+
+Beta 1.2.2 {  
+
+    Улучшена адаптивность на различных устройствах
+    //Improved adaptability on various devices
+
+    Косметические доработки
+    //Cosmetic improvements
+    
+    Добавлены темная и светлая темы
+    //Added white and dark themes
+}
+
+
+Release 1.0 {
+
+    Полная переработка архитектуры
+    // Complete architectural refactor (MVVM separation)
+
+    Разделение Model, View и ViewModel
+    // Clear separation of responsibilities
+
+    Добавлена полноценная система тем
+    // Theme system with dynamic CSS variable support
+
+    Улучшена адаптивность под различные устройства
+    // Improved responsive layout for desktop and mobile
+
+    Добавлена система статистики и метрик
+    // Statistics and metric tracking system
+
+    Добавлены звуковые эффекты и управление ими
+    // Sound system with toggle support
+
+    Оптимизация производительности и структуры кода
+    // Codebase optimization and refactoring
+
+    Добавлен режим Track, основной режим переименован в Shoot
+    // Added Track mode; original mode renamed to Shoot
+
+    Переработана система спавна мишеней
+    // Refactored target spawn system
+
+    Добавлена настройка выбора количества одновременно активных мишеней
+    // Configurable number of simultaneously active targets
+}

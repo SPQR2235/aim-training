@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Aim Training by SPQR_rsnt</title>
+    <link rel="stylesheet" href="source/style/style.css">
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <div>
+                Aim Training<div id="under-logo">by SPQR_rsnt</div>
+            </div>
+        </div>
+        <div id="stat-wrap">
+            <section class="stat-section">
+                <div id="hits" class="stat"> Hits: 0</div>
+                <div id="misses" class="stat track-mode-hidden-stat">Misses: 0</div>
+            </section>
+            <div class="vertical-stat-line track-mode-hidden-stat"></div>
+            <section class="stat-section">
+                <div id="time" class="stat">Time: 00:00</div>
+            </section>
+            <div class="vertical-stat-line"></div>
+            <section class="stat-section">
+                <div id="cps" class="stat">CPS: 0</div>
+                <div id="accuracy" class="stat track-mode-hidden-stat">Accuracy: 0.00%</div>
+            </section>
+        </div>
+    </header>
+    <main id="target-wrap">
+        <div id="container">
+            <div class="line">
+                <div id="target1" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target2" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target3" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target4" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target21" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target22" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target23" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+            </div>
+            <div class="line">
+                <div id="target5" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target6" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target7" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target8" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target24" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target25" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target26" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+            </div>
+            <div class="line">
+                <div id="target9" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target10" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target11" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target12" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target27" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target28" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target29" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+            </div>
+            <div class="line">
+                <div id="target13" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target14" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target15" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target16" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target30" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target31" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target32" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+            </div>
+            <div class="line">
+                <div id="target17" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target18" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target19" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target20" class="target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target33" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target34" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+                <div id="target35" class="target wide-target">
+                    <div class="inner-circle"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="button-wrap">
+            <div class="button-section">
+                <button id="random-color-button" class="button">Random Color: Off</button>
+                <button id="theme-button" class="button">Theme: Dark</button>
+            </div>
+            <div class="button-section">
+                <button id="mode-button" class="button">Mode: Shoot</button>
+                <button id="difficulty-button" class="button">Difficulty: Easy</button>
+            </div>
+            <div class="button-section">
+                <button id="targets-button" class="button">Targets: 3</button>
+                <button id="sound-button" class="button">Sounds On</button>
+            </div>
+        </div>
+    </footer>
+    <audio id="sound1" src="source/sounds/1.mp3" preload="auto"></audio>
+    <audio id="sound2" src="source/sounds/2.mp3" preload="auto"></audio>
+    <script type="module" src="source/Logic/ViewModel.js"></script>
+</body>
+
+</html>

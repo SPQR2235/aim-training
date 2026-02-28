@@ -1,0 +1,250 @@
+:root {
+    --textColor: rgb(216, 216, 216);
+    
+    --headerHeight: 15dvh;
+    --headerTemplateColumns: 100%;
+    --nonPlayingAreaBackground: rgb(34, 34, 34);
+    --logoDisplay: none;
+    
+    --targetWrapBackground: rgb(85, 85, 85);
+    --targetContainerHeight: calc(100dvh - (var(--headerHeight) * 2.5));
+    
+    --lineWidth: 100dvw;
+    --lineGap: 20px;
+    
+    --targetSize: 50px;
+    --targetColor: rgb(170, 170, 170);
+    --targetCircleColor: rgb(195, 195, 195);
+    
+    --buttonBackground: rgb(57, 57,57 );
+    --buttonBorder: 3px solid rgb(75, 75, 75);
+    --buttonShadow: rgb(75, 75, 75);
+    --buttonHeight: 35px;
+    --buttonWidth: 100px;
+    --buttonFontSize: 0.7em;
+
+    --scaleBasedOnDifficulty: scale(1);
+    --wideTargetDisplay: none;
+    --trackModeHiddenStat: flex;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    overflow: hidden;
+    user-select: none;
+}
+
+header {
+    width: 100vw;
+    height: var(--headerHeight);
+    background: var(--nonPlayingAreaBackground);
+    display: grid;
+    align-items: center;
+    grid-template-columns: var(--headerTemplateColumns);
+}
+
+#logo {
+    white-space: nowrap;
+    margin-left: 50px;
+    height: auto;
+    display: var(--logoDisplay);
+    justify-self: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#under-logo {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    font-size: 0.9em;
+    color: #4f4f4f;
+}
+
+.stat,
+#target-wrap,
+#container,
+.target,
+.wide-target,
+footer,
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#stat-wrap {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-self: center;
+    gap: 20px;
+}
+
+#logo,
+.button,
+.stat {
+    color: var(--textColor);
+    white-space: nowrap;
+}
+
+.stat {
+    height: auto;
+    font-size: calc(var(--buttonFontSize) * 1.5);
+    user-select: text;
+}
+
+.track-mode-hidden-stat {
+    display: var(--trackModeHiddenStat);
+}
+
+.vertical-stat-line {
+    display: var(--wideTargetDisplay);
+    width: 2px;
+    height: calc(var(--headerHeight) - 20px);
+    background: var(--buttonBackground);
+}
+
+#target-wrap {
+    position: fixed;
+    top: var(--headerHeight);
+    height: calc(100dvh - (var(--headerHeight) * 2));
+    width: 100dvw;
+    background: var(--targetWrapBackground);
+    transition: background 0.5s ease;
+}
+
+#container {
+    height: var(--targetContainerHeight);
+    width: 100%;
+    flex-direction: column;
+}
+
+.line {
+    width: var(--lineWidth);
+    height: 20%;
+    gap: var(--lineGap);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.target, .wide-target {
+    position: relative;
+    height: var(--targetSize);
+    aspect-ratio: 1/1;
+    background-color: var(--targetColor);
+    font-size: 1.8em;
+    transition: opacity 0.4s ease, transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
+    pointer-events: none;
+    border-radius: 50%;
+    box-shadow: 0px 0px 24px 2px var(--targetColor);
+    opacity: 0;
+    transform: var(--scaleBasedOnDifficulty);
+}
+
+.wide-target {
+    display: var(--wideTargetDisplay);
+}
+
+.inner-circle {
+    content: "";
+    position: absolute;
+    height: 100%;
+    aspect-ratio: 1/1;
+    border: 20px double var(--targetCircleColor);
+    border-radius: 50%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100dvw;
+    height: var(--headerHeight);
+    background: var(--nonPlayingAreaBackground);
+}
+
+#button-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.button-section {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.button {
+    border-radius: 15px;
+    min-width: var(--buttonWidth);
+    width: auto;
+    height: var(--buttonHeight);
+    background: var(--buttonBackground);
+    border: var(--buttonBorder);
+    font-size: var(--buttonFontSize);
+    transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.4s ease, border 0.3s ease;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 25px 2px var(--buttonShadow);
+}
+
+.active {
+    opacity: 1 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+@media(min-width: 1280px) {
+    :root {
+        --buttonWidth: 150px;
+        --targetSize: 75px;
+        --buttonHeight: 40px;
+        --headerHeight: 9vh;
+        --targetContainerHeight: calc(100dvh - (var(--headerHeight) * 2));
+        --wideTargetDisplay: block;
+        --lineGap: 65px;
+        --lineWidth: 67%;
+        --logoDisplay: flex;
+        --headerTemplateColumns: 33.3% 33.3% 33.3%;
+        --buttonBorderAndShadow: 5px solid #393939;
+    }
+
+    header {
+        height: var(--headerHeight);
+    }
+
+    .button-section {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1600px) {
+    :root {
+        --buttonWidth: 175px;
+        --targetSize: 100px;
+        --buttonHeight: 50px;
+        --headerHeight: 7.5dvh;
+    }
+}
+
+@media(min-width: 2000px) {
+    :root {
+        --buttonWidth: 225px;
+        --targetSize: 115px;
+        --buttonHeight: 60px;
+        --buttonFontSize: 1.1em;
+    }
+}

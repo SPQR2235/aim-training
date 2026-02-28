@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# aim-training
-=======
 # Aim Training
 ![Preview](images/preview.png)
 A browser-based aim training application built with vanilla JavaScript using MVVM architecture.
@@ -24,4 +21,4 @@ A browser-based aim training application built with vanilla JavaScript using MVV
 
 1. Clone the repository
 2. Open `index.html` with Live Server or directly in browser
->>>>>>> 25de807 (Initial release 1.0)
+

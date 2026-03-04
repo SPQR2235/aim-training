@@ -39,6 +39,9 @@ export function renderGAME(mode, target, difficulty) {
     case gameRender.ResetColor:
       resetColor()
       break
+    case gameRender.LoadTheme:
+      applyTheme(ViewState.themes[ViewState.theme.current])
+      break
   }
 }
 
@@ -86,7 +89,8 @@ function applyRandomColorToAll() {
 
 function applyRandomColor(target) {
   if (!target) return
-  const color = getRandomColor(true, 25)
+  const howMuchLighter = 25
+  const color = getRandomColor(true, howMuchLighter)
   target.style.boxShadow = `0px 0px 24px 2px ${color.base}, inset 0px 0px 24px 2px ${color.base}`
   target.style.backgroundColor = color.base
   target.firstElementChild.style.borderColor = color.lighter

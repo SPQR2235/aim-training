@@ -14,6 +14,7 @@ function gameLoop() {
 document.addEventListener("DOMContentLoaded", () => {
   Model.spawnTargets()
   View.activateTargets(Model.takeAllActiveTargets())
+  View.renderGAME(gameRender.LoadTheme)
 
   requestAnimationFrame(gameLoop)
 
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ViewState.DOM.targetWrap.addEventListener("click", (e) => {
     if (Model.isTrackMode()) return
+    Model.startGame()
     if (e.target.closest(".target")) return
     Model.registerMiss()
   })
@@ -96,10 +98,7 @@ export function getKeyByValue(obj, value) {
 }
 
 function handleInteraction(e) {
-  if (!Model.isGameStarted()) {
-    Model.startMetricSystem()
-    Model.startGame()
-  }
+  Model.startGame()
 
   const target = e.currentTarget;
 

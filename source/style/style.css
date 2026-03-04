@@ -3,22 +3,15 @@
     
     --headerHeight: 15dvh;
     --headerTemplateColumns: 100%;
-    --nonPlayingAreaBackground: rgb(34, 34, 34);
     --logoDisplay: none;
     
-    --targetWrapBackground: rgb(85, 85, 85);
     --targetContainerHeight: calc(100dvh - (var(--headerHeight) * 2.5));
     
     --lineWidth: 100dvw;
     --lineGap: 20px;
     
     --targetSize: 50px;
-    --targetColor: rgb(170, 170, 170);
-    --targetCircleColor: rgb(195, 195, 195);
     
-    --buttonBackground: rgb(57, 57,57 );
-    --buttonBorder: 3px solid rgb(75, 75, 75);
-    --buttonShadow: rgb(75, 75, 75);
     --buttonHeight: 35px;
     --buttonWidth: 100px;
     --buttonFontSize: 0.7em;
@@ -142,6 +135,7 @@ footer,
     height: var(--targetSize);
     aspect-ratio: 1/1;
     background-color: var(--targetColor);
+    border: 20px double var(--targetCircleColor);
     font-size: 1.8em;
     transition: opacity 0.4s ease, transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
     pointer-events: none;
@@ -153,15 +147,6 @@ footer,
 
 .wide-target {
     display: var(--wideTargetDisplay);
-}
-
-.inner-circle {
-    content: "";
-    position: absolute;
-    height: 100%;
-    aspect-ratio: 1/1;
-    border: 20px double var(--targetCircleColor);
-    border-radius: 50%;
 }
 
 footer {

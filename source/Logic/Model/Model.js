@@ -88,7 +88,10 @@ export function isGameStarted() {
 }
 
 export function startGame() {
-  game.started = true
+  if (!isGameStarted()) {
+    startMetricSystem()
+    game.started = true
+  }
 }
 
 export function allGameModes() {

@@ -20,57 +20,57 @@ export const theme = { current: 0 }
 export const themes = Object.freeze([
   { 
     name: "Dark",
-    color: "rgb(170, 170, 170)", 
-    circle: "rgb(195, 195, 195)", 
-    targetWrapBackground: "rgb(85, 85, 85)", 
-    nonPlayingAreaBackground: "rgb(34, 34, 34)", 
+    color: "rgb(175, 175, 175)", 
+    circle: "rgb(200, 200, 200)", 
+    targetWrapBackground: "rgb(75, 75, 75)", 
+    nonPlayingAreaBackground: "rgb(35, 35, 35)", 
     buttonBorderAndShadow: "rgb(75, 75, 75)",
-    buttonBackground: "rgb(57, 57, 57)"
+    buttonBackground: "rgb(50, 50, 50)"
   },
   { 
     name: "Light",
-    color: "rgb(255, 255, 255)", 
-    circle: "rgb(200, 200, 200)", 
-    targetWrapBackground: "rgb(165, 165, 165)",
-    nonPlayingAreaBackground: "rgb(111, 111, 111)", 
+    color: "rgb(225, 225, 225)", 
+    circle: "rgb(250, 250, 250)", 
+    targetWrapBackground: "rgb(150, 150, 150)",
+    nonPlayingAreaBackground: "rgb(100, 100, 100)", 
     buttonBorderAndShadow: "rgb(255, 255, 255)",
-    buttonBackground: "rgb(161, 161, 161)"
+    buttonBackground: "rgb(125, 125, 125)"
   },
   { 
     name: "Yellow",
-    color: "rgb(255, 230, 0)",
-    circle: "rgb(255, 255, 175)", 
-    targetWrapBackground: "rgb(147, 146, 91)",
-    nonPlayingAreaBackground: "rgb(93, 91, 0)",
+    color: "rgb(225, 225, 0)",
+    circle: "rgb(250, 250, 25)", 
+    targetWrapBackground: "rgb(150, 150, 75)",
+    nonPlayingAreaBackground: "rgb(100, 100, 0)",
     buttonBorderAndShadow: "rgb(175, 175, 0)",
-    buttonBackground: "rgb(118, 118, 0)"
+    buttonBackground: "rgb(125, 125, 0)"
   },
   { 
-    name: "Green" ,
-    color: "rgb(50, 255, 50)", 
-    circle: "rgb(170, 255, 170)", 
-    targetWrapBackground: "rgb(97, 143, 85)", 
-    nonPlayingAreaBackground: "rgb(3, 81, 0)",
-    buttonBorderAndShadow: "rgb(0, 149, 0)",
-    buttonBackground: "rgb(0, 115, 0)"
+    name: "Green",
+    color: "rgb(50, 225, 50)", 
+    circle: "rgb(75, 250, 75)", 
+    targetWrapBackground: "rgb(75, 150, 75)", 
+    nonPlayingAreaBackground: "rgb(25, 100, 25)",
+    buttonBorderAndShadow: "rgb(0, 200, 0)",
+    buttonBackground: "rgb(0, 125, 0)"
   },
   { 
     name: "Cyan",
-    color: "rgb(0, 255, 221)", 
-    circle: "rgb(200, 255, 255)", 
-    targetWrapBackground: "rgb(82, 133, 131)", 
-    nonPlayingAreaBackground: "rgb(0, 144, 125)",
-    buttonBorderAndShadow: "rgb(0, 255, 221)",
-    buttonBackground: "rgb(0, 156, 127)"
+    color: "rgb(0, 225, 225)", 
+    circle: "rgb(25, 250, 250)", 
+    targetWrapBackground: "rgb(75, 150, 150)", 
+    nonPlayingAreaBackground: "rgb(0, 150, 125)",
+    buttonBorderAndShadow: "rgb(0, 255, 225)",
+    buttonBackground: "rgb(0, 175, 150)"
   },
   { 
     name: "Blue",
-    color: "rgb(0, 60, 255)", 
-    circle: "rgb(80, 115, 250)", 
-    targetWrapBackground: "rgb(49, 68, 120)", 
-    nonPlayingAreaBackground: "rgb(17, 61, 156)",
+    color: "rgb(0, 75, 225)", 
+    circle: "rgb(25, 100, 250)", 
+    targetWrapBackground: "rgb(50, 75, 150)", 
+    nonPlayingAreaBackground: "rgb(25, 50, 150)",
     buttonBorderAndShadow: "rgb(0, 60, 255)",
-    buttonBackground: "rgb(0, 42, 180)"
+    buttonBackground: "rgb(25, 75, 175)"
   },
   { 
     name: "Purple",

@@ -1,3 +1,8 @@
+export const poolSize = {
+  lines: 5,
+  targets: 35
+}
+
 export const DOM = {
   root: document.documentElement,
   time: document.getElementById("time"),
@@ -6,14 +11,16 @@ export const DOM = {
   misses: document.getElementById("misses"),
   accuracy: document.getElementById("accuracy"),
   targetWrap: document.getElementById("target-wrap"),
+  targetContainer: document.getElementById("container"),
   randomColorButton: document.getElementById("random-color-button"),
   modeButton: document.getElementById("mode-button"),
   targetsButton: document.getElementById("targets-button"),
   soundButton: document.getElementById("sound-button"),
   themeButton: document.getElementById("theme-button"),
   difficultyButton: document.getElementById("difficulty-button"),
-  targets: document.querySelectorAll(".target")
 }
+
+export const targets = []
 
 export const theme = { current: 0 }
 

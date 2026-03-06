@@ -11,13 +11,16 @@
     --lineGap: 20px;
     
     --targetSize: 50px;
+
+    --buttonWrapWidth: 95%;
+    --buttonSectionDirection: column;
+    --buttonSectionGap: 5px;
     
     --buttonHeight: 35px;
     --buttonWidth: 100px;
     --buttonFontSize: 0.7em;
 
     --scaleBasedOnDifficulty: scale(1);
-    --wideTargetDisplay: none;
     --trackModeHiddenStat: flex;
 }
 
@@ -130,7 +133,7 @@ footer,
     transition: all 0.3s ease;
 }
 
-.target, .wide-target {
+.target {
     position: relative;
     height: var(--targetSize);
     aspect-ratio: 1/1;
@@ -145,10 +148,6 @@ footer,
     transform: var(--scaleBasedOnDifficulty);
 }
 
-.wide-target {
-    display: var(--wideTargetDisplay);
-}
-
 footer {
     position: fixed;
     bottom: 0;
@@ -160,14 +159,14 @@ footer {
 #button-wrap {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
+    justify-content: space-between;
+    width: var(--buttonWrapWidth);
 }
 
 .button-section {
     display: flex;
-    gap: 20px;
-    flex-direction: column;
+    gap: var(--buttonSectionGap);
+    flex-direction: var(--buttonSectionDirection);
 }
 
 .button {
@@ -194,41 +193,42 @@ footer {
 
 @media(min-width: 1280px) {
     :root {
-        --buttonWidth: 150px;
-        --targetSize: 75px;
-        --buttonHeight: 40px;
         --headerHeight: 9vh;
+        --headerTemplateColumns: 33.3% 33.3% 33.3%;
+        --logoDisplay: flex;
+
         --targetContainerHeight: calc(100dvh - (var(--headerHeight) * 2));
-        --wideTargetDisplay: block;
+
         --lineGap: 65px;
         --lineWidth: 67%;
-        --logoDisplay: flex;
-        --headerTemplateColumns: 33.3% 33.3% 33.3%;
+
+        --targetSize: 75px;
+
+        --buttonWrapWidth: 75%;
+        --buttonSectionGap: 20px;
+        --buttonSectionDirection: row;
+
+        --buttonWidth: 150px;
+        --buttonHeight: 40px;
         --buttonBorderAndShadow: 5px solid #393939;
-    }
-
-    header {
-        height: var(--headerHeight);
-    }
-
-    .button-section {
-        flex-direction: row;
     }
 }
 
 @media (min-width: 1600px) {
     :root {
-        --buttonWidth: 175px;
-        --targetSize: 100px;
-        --buttonHeight: 50px;
         --headerHeight: 7.5dvh;
+
+        --targetSize: 100px;
+
+        --buttonWidth: 175px;
+        --buttonHeight: 50px;
     }
 }
 
 @media(min-width: 2000px) {
     :root {
-        --buttonWidth: 225px;
         --targetSize: 115px;
+        --buttonWidth: 225px;
         --buttonHeight: 60px;
         --buttonFontSize: 1.1em;
     }

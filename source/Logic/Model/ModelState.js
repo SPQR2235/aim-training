@@ -2,7 +2,7 @@ import { gameMode } from './Mode.js'
 
 export const MAX_TARGETS = 5
 
-export const game = {
+export const gameData = {
   started: false,
   targets: 3,
   difficulty: 0,

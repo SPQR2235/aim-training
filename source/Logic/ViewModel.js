@@ -1,75 +1,81 @@
-import * as ViewState from './View/ViewState.js'
-import * as Model from './Model/Model.js'
 import * as View from './View/View.js'
+import * as Sound from './View/Sound.js'
+import * as Target from './View/Target.js'
+import * as ViewState from './View/ViewState.js'
 import { gameRender } from './View/RenderMode.js'
+import { renderHUD, renderGAME, renderButton } from './View/Render.js'
+
+import * as Game from './Model/Game.js'
+import * as DataManager from './Model/DataManager.js'
+import { registerMiss, registerHit } from './Model/Metric.js'
 
 function gameLoop() {
-  if (Model.shouldRenderHUD()) {
-    View.renderHUD(Model.takeStateForRenderHUD())
-    Model.resetRenderHUDFlag()
+  if (DataManager.shouldRenderHUD()) {
+    renderHUD(DataManager.takeStateForRenderHUD())
+    DataManager.resetRenderHUDFlag()
   }
   requestAnimationFrame(gameLoop)
-}
+} 
 
 document.addEventListener("DOMContentLoaded", () => {
-  Model.spawnTargets()
-  View.activateTargets(Model.takeAllActiveTargets())
-  View.renderGAME(gameRender.LoadTheme)
+  Target.setPoolSize(DataManager.isDeviceMobile())
+  Target.createTargetsPool(ViewState.poolSize.lines, ViewState.poolSize.targets)
+  Game.spawnTargets(DataManager.isDeviceMobile())
+  Target.activateTargets(DataManager.takeAllActiveTargets())
+  renderGAME(gameRender.LoadTheme)
 
   requestAnimationFrame(gameLoop)
 
-  ViewState.DOM.targets.forEach((target) => {
+  ViewState.targets.forEach((target) => {
     target.addEventListener("click", handleInteraction)
     target.addEventListener("mouseenter", handleInteraction)
   })
 
   ViewState.DOM.targetWrap.addEventListener("click", (e) => {
-    if (Model.isTrackMode()) return
-    Model.startGame()
+    if (DataManager.isTrackMode()) return
+    Game.startGame()
     if (e.target.closest(".target")) return
-    Model.registerMiss()
+    registerMiss()
   })
 
   ViewState.DOM.randomColorButton.addEventListener("click", () => {
-    Model.changeRandomColorFlag()
-    View.renderButton(ViewState.DOM.randomColorButton, `Random Color: ${getKeyByValue(ViewState.ActiveOrNot, Model.isRandomColorActive())}`)
-    View.playSound(Model.isSoundsActive(), ViewState.sounds.sound2)
+    DataManager.changeRandomColorFlag()
+    renderButton(ViewState.DOM.randomColorButton, `Random Color: ${getKeyByValue(ViewState.ActiveOrNot, DataManager.isRandomColorActive())}`)
+    Sound.playSound(DataManager.isSoundsActive(), ViewState.sounds.sound2)
 
-    if (Model.isRandomColorActive()) {
-      View.renderGAME(gameRender.GlobalApplyRandomColor)
+    if (DataManager.isRandomColorActive()) {
+      renderGAME(gameRender.GlobalApplyRandomColor)
       return
     }
-    View.renderGAME(gameRender.ResetColor)
+    renderGAME(gameRender.ResetColor)
   })
 
   ViewState.DOM.modeButton.addEventListener("click", () => {
-    if (!Model.isDeviceHasMouse()) {
-      alert("❌ Unavailable on current device\nThis mode requires mouse input.")
+    if (!DataManager.isDeviceHasMouse()) {
+      View.showMessage("❌ Unavailable on current device\nThis mode requires mouse input.")
       return
     }
-    Model.stopMetricSystem()
-    Model.resetStats()
-    Model.changeGameMode()
-    Model.resetRenderHUDFlag()
-    View.renderButton(ViewState.DOM.modeButton, `Mode: ${getKeyByValue(Model.allGameModes(), Model.currentMode())}`)
-    View.playSound(Model.isSoundsActive(), ViewState.sounds.sound2)
+    const changeMode = true
+    Game.stopGame(changeMode)
+    renderButton(ViewState.DOM.modeButton, `Mode: ${getKeyByValue(DataManager.allGameModes(), DataManager.currentMode())}`)
+    Sound.playSound(DataManager.isSoundsActive(), ViewState.sounds.sound2)
   })
 
   ViewState.DOM.targetsButton.addEventListener("click", () => {
-    const { removedTargets, addedTarget } = Model.increaseTargets()
-    removedTargets.forEach(id => View.deactivateTarget(id))
-    if (addedTarget) View.activateTarget(addedTarget)
+    const { removedTargets, addedTarget } = Game.increaseTargets()
+    removedTargets.forEach(id => Target.deactivateTarget(id))
+    if (addedTarget) Target.activateTarget(addedTarget)
 
-    View.renderButton(ViewState.DOM.targetsButton, `Targets: ${Model.howManyTargetsActive()}`)
-    View.playSound(Model.isSoundsActive(), ViewState.sounds.sound2)
+    renderButton(ViewState.DOM.targetsButton, `Targets: ${DataManager.howManyTargetsActive()}`)
+    Sound.playSound(DataManager.isSoundsActive(), ViewState.sounds.sound2)
   })
 
   ViewState.DOM.difficultyButton.addEventListener("click", () => {
-    Model.increaseDifficulty()
+    Game.increaseDifficulty()
 
-    View.playSound(Model.isSoundsActive(), ViewState.sounds.sound2)
-    View.renderButton(ViewState.DOM.difficultyButton, `Difficulty: ${ViewState.difficulty.names[Model.whatADifficulty()]}`)
-    View.renderGAME(gameRender.ChangeDifficulty, null, Model.whatADifficulty())
+    Sound.playSound(DataManager.isSoundsActive(), ViewState.sounds.sound2)
+    renderButton(ViewState.DOM.difficultyButton, `Difficulty: ${ViewState.difficulty.names[DataManager.currentDifficulty()]}`)
+    renderGAME(gameRender.ChangeDifficulty, null, DataManager.currentDifficulty())
   })
 
   ViewState.DOM.themeButton.addEventListener("click", () => {
@@ -77,15 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ViewState.theme.current > ViewState.themes.length - 1) {
       ViewState.theme.current = 0
     }
-    View.playSound(Model.isSoundsActive(), ViewState.sounds.sound2)
-    View.renderButton(ViewState.DOM.themeButton, `Theme: ${ViewState.themes[ViewState.theme.current].name}`)
-    View.renderGAME(gameRender.ChangeTheme)
+    Sound.playSound(DataManager.isSoundsActive(), ViewState.sounds.sound2)
+    renderButton(ViewState.DOM.themeButton, `Theme: ${ViewState.themes[ViewState.theme.current].name}`)
+    renderGAME(gameRender.ChangeTheme)
   })
 
   ViewState.DOM.soundButton.addEventListener("click", () => {
-    Model.changeSoundsFlag()
-    View.renderButton(ViewState.DOM.soundButton, `Sounds: ${getKeyByValue(ViewState.ActiveOrNot, Model.isSoundsActive())}`)
-    View.playSound(Model.isSoundsActive(), ViewState.sounds.sound2)
+    DataManager.changeSoundsFlag()
+    renderButton(ViewState.DOM.soundButton, `Sounds: ${getKeyByValue(ViewState.ActiveOrNot, DataManager.isSoundsActive())}`)
+    Sound.playSound(DataManager.isSoundsActive(), ViewState.sounds.sound2)
   })
 })
 
@@ -98,22 +104,22 @@ export function getKeyByValue(obj, value) {
 }
 
 function handleInteraction(e) {
-  Model.startGame()
+  Game.startGame()
 
   const target = e.currentTarget;
 
   if (
-    (!Model.isTrackMode() && e.type !== "click") ||
-    (Model.isTrackMode() && e.type !== "mouseenter")
+    (!DataManager.isTrackMode() && e.type !== "click") ||
+    (DataManager.isTrackMode() && e.type !== "mouseenter")
   ) return;
 
   if (!target.classList.contains("active")) return;
 
-  View.playSound(Model.isSoundsActive(), ViewState.sounds.sound1)
-  Model.registerHit()
+  Sound.playSound(DataManager.isSoundsActive(), ViewState.sounds.sound1)
+  registerHit()
   target.classList.remove("active")
-  View.activateTarget(Model.respawnTarget(getIdNumber(target)))
-  if (Model.isRandomColorActive()) {
-    View.renderGAME(gameRender.ApplyRandomColor, target)
+  Target.activateTarget(Game.respawnTarget(getIdNumber(target)))
+  if (DataManager.isRandomColorActive()) {
+    renderGAME(gameRender.ApplyRandomColor, target)
   }
 }

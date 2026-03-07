@@ -26,7 +26,7 @@ export const stats = {
 }
 
 export const device = {
-  mobile: window.matchMedia("(max-width: 768px)"),
+  mobile: window.matchMedia("(max-width: 768px)").matches,
   hasMouse: window.matchMedia("(pointer: fine)").matches
 }
 

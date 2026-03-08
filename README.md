@@ -31,3 +31,5 @@ Open the live version:
 1. Clone the repository
    ```bash
    git clone https://github.com/SPQR2235/aim-training.git
+
+2. Run with local server
